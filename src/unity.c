@@ -898,6 +898,10 @@ void UnityAssertEqualIntArray(UNITY_INTERNAL_PTR expected,
 static int UnityFloatsWithin(UNITY_FLOAT delta, UNITY_FLOAT expected, UNITY_FLOAT actual)
 {
     UNITY_FLOAT diff;
+    if (delta < UNITY_FLOAT_PRECISION && delta > -UNITY_FLOAT_PRECISION)
+    {
+        delta = UNITY_FLOAT_PRECISION;
+    }
     UNITY_FLOAT_OR_DOUBLE_WITHIN(delta, expected, actual, diff);
 }
 
@@ -1040,6 +1044,10 @@ void UnityAssertFloatSpecial(const UNITY_FLOAT actual,
 static int UnityDoublesWithin(UNITY_DOUBLE delta, UNITY_DOUBLE expected, UNITY_DOUBLE actual)
 {
     UNITY_DOUBLE diff;
+    if (delta < UNITY_DOUBLE_PRECISION && delta > -UNITY_DOUBLE_PRECISION)
+    {
+        delta = UNITY_DOUBLE_PRECISION;
+    }
     UNITY_FLOAT_OR_DOUBLE_WITHIN(delta, expected, actual, diff);
 }
 
